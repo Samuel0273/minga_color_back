@@ -1,4 +1,5 @@
 import "dotenv/config.js"; //configura las variables de entorno de mi aplicacion(datos sensibles).
+import "./config/database.js";
 // import createError from "http-errors"; //modulo necesario para crear/configurar errores en nuestro servidor.
 import express from "express"; //modulo necesario para levantar y configurar en nuestro servidor.
 import path from "path"; //modulo necesario para conocer la ubicacion de nuestro servidor.
