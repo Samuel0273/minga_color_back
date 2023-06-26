@@ -8,7 +8,8 @@
     "dev": "nodemon ./bin/www",
     "users": "node ./models/data/users.js",
     "authors": "node ./models/data/authors.js",
-    "categories": "node ./models/data/categories.js"
+    "categories": "node ./models/data/categories.js",
+    "data": "node ./models/data/data.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
