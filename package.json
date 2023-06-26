@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "users": "node ./models/data/users.js"
+    "users": "node ./models/data/users.js",
+    "authors": "node ./models/data/authors.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
