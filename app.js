@@ -8,6 +8,8 @@ import logger from "morgan"; //modulo necesario para registrar las peticiones qu
 import cors from "cors";
 import { __dirname } from "./utils.js";
 import indexRouter from "./routes/index.js"; //enrutador principal de la aplicacion.
+import error_handler from "./middlewares/error_handler.js";
+import not_found_handler from "./middlewares/not_found_handler.js";
 
 let app = express(); //defino una variable con la ejecucion del modulo de express para poder crear un servidor.
 
@@ -24,7 +26,10 @@ app.use(express.json()); //obliga al servidor a transformar/manejar formato JSON
 app.use(express.urlencoded({ extended: false })); //obliga al servidor a acceder a consultas complejas(permite leer queries y params de una petición).
 app.use(express.static(path.join(__dirname, "public"))); //obliga al servidor a generar una carpeta de acceso PUBLICO al cliente
 app.use(cors()); //obliga al servidor a permitir el cruce de origenes de front/back
+
 //endpoints
 app.use("/api", indexRouter); //obliga al servidor a usar las rutas definidas en el enrutador principal con la palabrita "/api"
+app.use(not_found_handler);
+app.use(error_handler);
 
 export default app;
