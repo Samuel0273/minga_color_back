@@ -1,18 +1,18 @@
-const validator = (schema) => [
-    (req, res, next) => {
-        const validation = schema.validate(req.body, {abortEarly: false});
+import userRegister from "../schemas/auth/signin.js";
 
-        // En caso de error respondo con el array de todos los mensajes
-        if(validation.error) {
-            return res.status(400).json({
-                success: false,
-                message: validation.error.details.map(error => error.message)
-            })
-        }
+const validator = (schema) => (req, res, next) => {
+  const validation = schema.validate(req.body, { abortEarly: false });
 
-        // En caso de que mis validaciones pasen
-        return next();
-    }
-]
+  if (validation.error) {
+    return res.status(400).json({
+      success: false,
+      message: validation.error.details.map((error) => error.message),
+    });
+  }
 
-export default validator;
+  return next();
+};
+
+const validateUserRegister = validator(userRegister);
+
+export default validateUserRegister;
