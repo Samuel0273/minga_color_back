@@ -2,7 +2,11 @@ import User from '../../models/Users.js'
 
 export default async (req, res) => {
     try {
-        const one = await User.create(req.body);
+        const one = await User.findOneAndUpdate(
+           { email:req.body.email},
+           { online:true},
+           {new:true}
+        );
 
         return res.status(201).json({
             response: one,
