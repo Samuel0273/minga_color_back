@@ -3,7 +3,7 @@ import read from "../controllers/users/read.js";
 import register from "../controllers/users/register.js";
 import signin from "../controllers/users/signin.js";
 import validator from "../middlewares/validator.js";
-import userRegister from "../schemas/auth/signin.js";
+import userRegister from "../schemas/auth/register.js";
 
 const auth_router = Router();
 auth_router.post("/register", validator(userRegister), register); //POST: para crear un autor
