@@ -26,19 +26,6 @@ const userRegister = joi.object({
     "string.empty": "Photo is a required field",
     "string.uri": "Photo must be a valid URL",
   }),
-  role: joi.number().required().messages({
-    "number.base": "Role must be a number",
-    "number.empty": "Role is a required field",
-  }),
-  online: joi.boolean(),
-  verified: joi.boolean().required().messages({
-    "boolean.base": "Checked field must be a boolean",
-    "boolean.empty": "The verified field is a required field",
-  }),
-  verify_code: joi.string().required().messages({
-    "string.base": "Verification code must be a text string",
-    "string.empty": "Verification code is a required field",
-  }),
 });
 
 export default userRegister;
