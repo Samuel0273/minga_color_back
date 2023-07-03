@@ -1,5 +1,3 @@
-import userRegister from "../schemas/auth/signin.js";
-
 const validator = (schema) => (req, res, next) => {
   const validation = schema.validate(req.body, { abortEarly: false });
 
@@ -13,6 +11,4 @@ const validator = (schema) => (req, res, next) => {
   return next();
 };
 
-const validateUserRegister = validator(userRegister);
-
-export default validateUserRegister;
+export default validator;
