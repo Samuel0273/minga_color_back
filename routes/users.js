@@ -5,9 +5,17 @@ import signin from "../controllers/users/signin.js";
 import validator from "../middlewares/validator.js";
 import userRegister from "../schemas/auth/register.js";
 import signinSchema from "../schemas/auth/signinSchema.js";
+import accountExists from "../middlewares/accountExists.js";
+import createHash from "../middlewares/createHash.js";
 
 const auth_router = Router();
-auth_router.post("/register", validator(userRegister), register); //POST: para crear un autor
+auth_router.post(
+  "/register",
+  validator(userRegister),
+  accountExists,
+  createHash,
+  register
+); //POST: para crear un autor
 auth_router.post("/signin",validator(signinSchema), signin);
 auth_router.get("/", read); //GET: para leer (TODOS o SOLO UNO) autores
 //auth_router.put()    //PUT: para actualizar un autor
