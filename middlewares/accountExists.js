@@ -1,4 +1,4 @@
-import User from "../models/Users.js";
+import User from "../models/User.js";
 
 export default async (req, res, next) => {
   try {

@@ -1,24 +1,22 @@
-import User from '../../models/Users.js'
+import User from "../../models/User.js";
 
-export default async (req, res) => {
+export default async(req,res,next)=> {
     try {
-        const one = await User.findOneAndUpdate(
-           { email:req.body.email},
-           { online:true},
-           {new:true}
-        );
-
-        return res.status(201).json({
-            response: one,
-            success: true,
-            message: 'User created'
+        let one = await User.findOneAndUpdate(
+            {email: req.body.email},
+            {online: true},
+            {new: true}
+        )
+        delete one.password
+        return res.status(200).json({
+            success:true,
+            message:'user signed in!',
+            response: {
+                user: one,
+                token: req.token
+            }
         })
     } catch (error) {
-        console.log(error)                  //consologueo el error
-        return res.status(500).json({       //envío al cliente OTRA respuesta con los datos que quiera
-            response:null,
-            success:false,
-            message:error.message
-        })
+        return next()
     }
 }
