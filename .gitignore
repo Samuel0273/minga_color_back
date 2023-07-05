@@ -1,2 +1,4 @@
 /node_modules
 .env
+/middlewares/chapterExists.js
+/add_cover_photo.js
