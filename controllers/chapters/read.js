@@ -1,18 +1,32 @@
-export default function (req, res) {
+import Chapter from "../../models/Chapter.js";
+
+export default async (req, res) => {
   try {
-    return res.status(200).json({
-      success: true,
-      response: "aca luego nos vamos a conectar a mongo en sprint 3",
-      message: "/chapters",
-    });
-  } catch (error) {
+    let all = await Chapter.find()
+    if (all.length > 0) {
+      return res.status(200).json({
+        response: all,
+        success: true,
+        message: "you have requested GET /api/chapters",
+        mindhub: "the best",
+        date: new Date()
+      })
+    } else {
+      return res.status(404).json({
+        response: null,
+        success: false,
+        message: "Chapters not found",
+        mindhub: "the best",
+        date: new Date()
+      })
+    }
+  }
+  catch (error){
+    console.log(error)
     return res.status(500).json({
-      success: false,
       response: null,
+      success: false,
       message: error.message,
-    });
+    })
   }
 }
-
-//definir los controladores READ de mangas, chapters y users como este controller
-//definir para la tarea minga-08 el controlador READ de categories igual al de authors

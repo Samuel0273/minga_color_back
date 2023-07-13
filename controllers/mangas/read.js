@@ -1,3 +1,4 @@
+
 import Manga from '../../models/Manga.js';
 
 async function read(req, res, next) {
