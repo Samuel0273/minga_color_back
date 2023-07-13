@@ -12,7 +12,8 @@ export default async(req,res,next)=> {
             success:true,
             message:'user signed in!',
             response: {
-                user: one,
+                user: one.email,
+                photo: one.photo,
                 token: req.token
             }
         })

@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import read from "../controllers/mangas/read.js";
 import create from "../controllers/mangas/create.js"
 
@@ -8,7 +9,10 @@ import mangaExists from "../middlewares/mangaExists.js";
 import passport from "../middlewares/passport.js";
 import read_one from "../controllers/mangas/read_one.js";
 
+
+
 const mangas_router = Router();
+
 
 mangas_router.get("/", read); //GET: para leer (TODOS o SOLO UNO) autores
 mangas_router.get('/:id', read_one) 
