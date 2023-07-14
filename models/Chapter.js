@@ -4,7 +4,7 @@ let collection = "chapters";
 
 let schema = new Schema(
   {
-    manga_id: { type: Types.ObjectId, ref: "Manga", require: true },
+    manga_id: { type: Types.ObjectId, ref: "Manga", required: true },
     title: { type: String, required: true },
     cover_photo: { type: String, required: true },
     pages: [{ type: String, required: true }],
